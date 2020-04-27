@@ -1,0 +1,28 @@
+{% extends 'shared/base.html' %}
+
+{% block title %} Results of {{  question.question_text }} {% endblock title %}
+
+{% block content %}
+
+
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>
+        {{ choice.choice_text }}  
+        -
+        <span class="badge badge-primary">
+            {{ choice.votes }} 
+            
+            vote{{ choice.votes|pluralize }}
+        </span>
+
+    </li>
+{% endfor %}
+</ul>
+
+<a class="btn btn-primary" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<a class="btn btn-info" href="{% url 'polls:index' %}">Back to questions</a>
+
+{% endblock %}
