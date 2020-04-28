@@ -15,9 +15,9 @@ def likes(request):
     
     question = get_object_or_404(Question, id=1)
     
-    likes = Likes.objects.filter(question=question).count()
-    
-    return JsonResponse({'likes': likes })
+    likes = Likes.objects.filter(question=question, user=request.user).count() > 0
+        
+    return HttpResponse({ 'likes': likes })
 
 def detail(request, question_id):
     question = get_object_or_404(Question, id=question_id)

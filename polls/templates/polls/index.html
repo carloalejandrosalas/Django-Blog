@@ -7,36 +7,36 @@
     {% if latest_question_list %}
 
         <div class="row">
+            {% for question in latest_question_list %}
             <div class="col-4">
-                {% for question in latest_question_list %}
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">
-                                {{question.question_text}}
-                            </h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            {{question.question_text}}
+                        </h3>
 
-                            <p class="font-weight-light">
-                                Publish at 
-                                <i>
-                                    {{ question.pub_date | date }}
-                                </i>
-                            </p>
+                        <p class="font-weight-light">
+                            Publish at 
+                            <i>
+                                {{ question.pub_date | date }}
+                            </i>
+                        </p>
 
-                            <div class="row mt-4">
-                                <div class="col">
-                                    <a class="btn btn-primary btn-block" href="{% url 'polls:detail' question.id %}">
-                                        Vote Right Now
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a class="btn btn-info btn-block" href="{% url 'polls:results' question.id %}">See results</a>
-                                </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <a class="btn btn-primary btn-block" href="{% url 'polls:detail' question.id %}">
+                                    Vote Right Now
+                                </a>
                             </div>
-
+                            <div class="col">
+                                <a class="btn btn-info btn-block" href="{% url 'polls:results' question.id %}">See results</a>
+                            </div>
                         </div>
+
                     </div>
-                {% endfor %}
+                </div>
             </div>
+            {% endfor %}
         </div>
     {% else %}
         <p>No polls are available.</p>

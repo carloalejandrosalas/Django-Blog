@@ -12,7 +12,7 @@ class Question(models.Model):
     pub_date = models.DateTimeField('date published')
     
     def __str__(self):
-            return self.question_text
+        return self.question_text
 
 
 class Choice(models.Model):
@@ -36,6 +36,3 @@ class Likes(models.Model):
 
     def __str__(self):
         return 'Like with id: '+str(self.id)
-
-    def user_like(self, question):
-        return self.question.filter(question=question)
