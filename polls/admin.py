@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Choice, Likes
+from .models import Question, Choice, Like
 
 # Register your models here.
 
@@ -10,4 +10,4 @@ class ChoiceAdmin(admin.ModelAdmin):
 
 admin.site.register(Question)
 admin.site.register(Choice, ChoiceAdmin)
-admin.site.register(Likes)
+admin.site.register(Like)

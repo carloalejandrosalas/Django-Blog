@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
 
-from .models import Question, Choice, Likes
+from .models import Question, Choice, Like
 from django.urls import reverse
 
 # Create your views here.
@@ -15,7 +15,7 @@ def likes(request):
     
     question = get_object_or_404(Question, id=1)
     
-    likes = Likes.objects.filter(question=question, user=request.user).count() > 0
+    likes = Like.objects.filter(question=question, user=request.user).count() > 0
         
     return HttpResponse({ 'likes': likes })
 

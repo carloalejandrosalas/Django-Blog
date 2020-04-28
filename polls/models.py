@@ -30,7 +30,7 @@ class Choice(models.Model):
         return self.question 
 
 
-class Likes(models.Model):
+class Like(models.Model):
     user = models.ManyToManyField(User)
     question = models.ManyToManyField(Question)
 
